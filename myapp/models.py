@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class CategoryView(models.Model):
+    name = models.CharField(max_length=50)
+    cat_type = models.CharField(max_length=50)
+    desc = models.CharField(max_length=300)
+    class Meta:
+        managed = False
+        db_table = "category"
+

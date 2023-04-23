@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapp.views import hello, ListCatView, AddCatView
+from myapp.views import hello, AddCatView, ListCatView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('hello/', hello, name='hello'),
-    path("api/cat/list/", ListCatView.as_view()),
-    path("api/cat/add/", AddCatView.as_view()),
+    path("api/cat/list", ListCatView.as_view()),
+    path("api/cat/add", AddCatView.as_view()),
 ]

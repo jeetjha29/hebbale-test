@@ -5,6 +5,5 @@ class CategoryView(models.Model):
     cat_type = models.CharField(max_length=50)
     desc = models.CharField(max_length=300)
     class Meta:
-        managed = False
         db_table = "category"
 

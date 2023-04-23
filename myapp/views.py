@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from myapp.models import CategoryView
+from rest_framework.response import Response
 from rest_framework import generics, status, serializers
 from rest_framework.pagination import PageNumberPagination
 from myapp.serializers import ListCatSerializer, AddCatSerializer
@@ -11,6 +12,7 @@ def hello(request):
 class ListCatView(generics.ListAPIView):
     serializer_class = ListCatSerializer
     queryset = CategoryView.objects.all()
+    print(queryset)
     pagination_class = PageNumberPagination
 
     def list(self, request, *args, **kwargs):
@@ -26,7 +28,6 @@ class ListCatView(generics.ListAPIView):
 
 
 class AddCatView(generics.CreateAPIView):
-    queryset = CategoryView.objects.all()
     serializer_class = AddCatSerializer
 
     def create(self, request, *args, **kwargs):

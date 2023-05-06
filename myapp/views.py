@@ -24,7 +24,9 @@ class ListCatView(generics.ListAPIView):
             return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        response = JsonResponse(serializer.data)
+        response["Access-Control-Allow-Origin"] = "*"
+        return response
 
 
 class AddCatView(generics.CreateAPIView):
